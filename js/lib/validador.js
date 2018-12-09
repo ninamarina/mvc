@@ -1,4 +1,5 @@
 function validacionDeFormulario(){
+let cantRespuestas = 0;
 $('#localStorageForm')
   .formValidation({
     framework: 'bootstrap',
@@ -33,12 +34,13 @@ $('#localStorageForm')
       $clone = $template
       .clone()
       .removeClass('hide')
-      .attr('id', "respuesta" + this.cantRespuestas)
+      .attr('id', "respuesta-" + cantRespuestas)
       .insertBefore($template),
       $option = $clone.find('[name="option[]"]');
 
     // agregado de nuevo campo al formulario
     $('#localStorageForm').formValidation('addField', $option);
+    cantRespuestas++;
   })
 
   // Manejo del boton agregar respuesta
